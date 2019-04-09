@@ -1,2 +1,2 @@
 # swiper
-this projiect
+this project
