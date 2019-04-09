@@ -8,7 +8,7 @@ def submit_phone(request):
     if not request.method =="POST":
         return HttpResponse('request method error')
 
-    phone = request.POST.get('phone')
+    phone = request.POST.get('submit phone')
 
     return "hello"
 
