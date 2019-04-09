@@ -1,16 +1,17 @@
-from django.shortcuts import render
-from django.http import HttpResponse
 from lib.sms import send_sms
+from lib.http import render_json
+from common import errors
 
 
 def submit_phone(request):
     """获取短信验证码"""
-    if not request.method =="POST":
-        return HttpResponse('request method error')
+    if not request.method == "POST":
+        return render_json('request method error', errors.REQUEST_ERROR)
 
-    phone = request.POST.get('submit phone')
+    phone = request.POST.get('phone')
+    result, msg = send_sms(phone)
 
-    return "hello"
+    return render_json(msg)
 
 
 def submit_vcode(request):
